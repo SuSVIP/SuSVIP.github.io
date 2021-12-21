@@ -246,10 +246,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-14 13:34:03 / 修改时间：20:10:21" itemprop="dateCreated datePublished" datetime="2021-12-14T13:34:03+08:00">2021-12-14</time>
+              <time title="创建时间：2021-12-14 13:34:03" itemprop="dateCreated datePublished" datetime="2021-12-14T13:34:03+08:00">2021-12-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-16 09:01:25" itemprop="dateModified" datetime="2021-12-16T09:01:25+08:00">2021-12-16</time>
+              </span>
 
           
 
@@ -309,6 +315,13 @@
 
               <time title="创建时间：2021-12-13 22:22:30" itemprop="dateCreated datePublished" datetime="2021-12-13T22:22:30+08:00">2021-12-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-21 15:55:09" itemprop="dateModified" datetime="2021-12-21T15:55:09+08:00">2021-12-21</time>
+              </span>
 
           
 
@@ -321,7 +334,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>正则表达式</p>
+<p><strong>正则表达式以“^”开头，“$”结尾</strong> </p>
+<ul>
+<li><strong>字符集：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">[1234]</th>
+<th align="left">1,2,3,4之一</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>[^12]</strong></td>
+<td align="left"><strong>除了1，2</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[1-5]</strong></td>
+<td align="left"><strong>1,2,3,4,5</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[a-f]</strong></td>
+<td align="left"><strong>a-f之间</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[0-9a-fA-F]</strong></td>
+<td align="left"><strong>一个 16 进制字符</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>0[xX][0-9a-fA-F]{1,8}</strong></td>
+<td align="left"><strong>表示整数的 16 进制数表达式</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[\w-]{8,15}</strong></td>
+<td align="left"><strong>表示 8-15 个人以字符、下划线、数字及“-”</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>预定义字符集:</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>\d</th>
+<th>表示[0-9]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>\w</strong></td>
+<td><strong>表示单词字符 [0-9a-zA-Z_] 注：包含下划线“_”</strong></td>
+</tr>
+<tr>
+<td><strong>\s</strong></td>
+<td><strong>表示匹配空白: \t \n \r \b \p</strong></td>
+</tr>
+<tr>
+<td><strong>.</strong></td>
+<td><strong>任意字符</strong></td>
+</tr>
+<tr>
+<td><strong>\D</strong></td>
+<td><strong>(不常用)表示非数字</strong></td>
+</tr>
+<tr>
+<td><strong>\W</strong></td>
+<td><strong>(不常用)表示非单词字符 [0-9a-zA-Z_]</strong></td>
+</tr>
+<tr>
+<td><strong>\S</strong></td>
+<td><strong>(不常用)表示非空白</strong></td>
+</tr>
+<tr>
+<td><strong>{n}</strong></td>
+<td><strong>表示数词 n 个，比如表示“5 个以上”用{5，}</strong></td>
+</tr>
+<tr>
+<td><strong>{m,n}</strong></td>
+<td><strong>表示数词 m 到 n 个</strong></td>
+</tr>
+<tr>
+<td><strong>?</strong></td>
+<td><strong>表示能出现 0 到 1 次 {0，1}</strong></td>
+</tr>
+<tr>
+<td><strong>+</strong></td>
+<td><strong>表示能出现 1 到 n 次 {1，}</strong></td>
+</tr>
+<tr>
+<td>*****</td>
+<td><strong>表示能出现 0 到 n 次 {0，}</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><img src="/2021/12/13/javase/image-20211221155143058.png" alt="image-20211221155143058"></li>
+</ul>
+
       
     </div>
 
@@ -363,10 +471,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-09 22:17:16 / 修改时间：22:40:50" itemprop="dateCreated datePublished" datetime="2021-12-09T22:17:16+08:00">2021-12-09</time>
+              <time title="创建时间：2021-12-09 22:17:16" itemprop="dateCreated datePublished" datetime="2021-12-09T22:17:16+08:00">2021-12-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-16 09:05:53" itemprop="dateModified" datetime="2021-12-16T09:05:53+08:00">2021-12-16</time>
+              </span>
 
           
 
@@ -429,10 +543,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-09 09:23:18 / 修改时间：09:39:14" itemprop="dateCreated datePublished" datetime="2021-12-09T09:23:18+08:00">2021-12-09</time>
+              <time title="创建时间：2021-12-09 09:23:18" itemprop="dateCreated datePublished" datetime="2021-12-09T09:23:18+08:00">2021-12-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-16 09:01:49" itemprop="dateModified" datetime="2021-12-16T09:01:49+08:00">2021-12-16</time>
+              </span>
 
           
 
@@ -875,6 +995,10 @@
           <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
