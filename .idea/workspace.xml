@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cce4ffd0-db15-4eed-a9fd-4b87336c3599" name="Changes" comment="close schedule">
+    <list default="true" id="cce4ffd0-db15-4eed-a9fd-4b87336c3599" name="Changes" comment="图片测试">
       <change beforePath="$PROJECT_DIR$/source/_posts/typroa使用技巧.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/typroa使用技巧.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
       <updated>1743005862289</updated>
       <workItem from="1743005863492" duration="2633000" />
       <workItem from="1743117709694" duration="316000" />
-      <workItem from="1743118518701" duration="3017000" />
+      <workItem from="1743118518701" duration="3624000" />
     </task>
     <task id="LOCAL-00001" summary="修改1">
       <created>1743006588913</created>
@@ -103,6 +103,7 @@
     <MESSAGE value="修改1" />
     <MESSAGE value="修改2" />
     <MESSAGE value="close schedule" />
-    <option name="LAST_COMMIT_MESSAGE" value="close schedule" />
+    <MESSAGE value="图片测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="图片测试" />
   </component>
 </project>
