@@ -34,8 +34,9 @@
 <meta property="og:image" content="http://example.com/2021/11/24/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330152237223.png">
 <meta property="og:image" content="http://example.com/2021/11/24/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330152739768.png">
 <meta property="og:image" content="http://example.com/2021/11/24/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330165253897.png">
+<meta property="og:image" content="http://example.com/image-20250330181943590.png">
 <meta property="article:published_time" content="2021-11-24T06:08:31.000Z">
-<meta property="article:modified_time" content="2025-03-30T09:33:45.232Z">
+<meta property="article:modified_time" content="2025-03-30T10:42:50.936Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="编程">
@@ -220,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-30 17:33:45" itemprop="dateModified" datetime="2025-03-30T17:33:45+08:00">2025-03-30</time>
+                <time title="修改时间：2025-03-30 18:42:50" itemprop="dateModified" datetime="2025-03-30T18:42:50+08:00">2025-03-30</time>
               </span>
 
           
@@ -290,13 +291,18 @@
 <p>重新执行生成命令<code>hexo g</code>后，再启动本地预览<code>hexo s</code>，主题就变了</p>
 <p><img src="/2021/11/24/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330152739768.png" alt="image-20250330152739768"></p>
 <h3 id="9-解决hexo-d异常"><a href="#9-解决hexo-d异常" class="headerlink" title="9.解决hexo d异常"></a>9.解决<code>hexo d</code>异常</h3><p><strong>C:\Users\Administrator.ssh 中找到.ssh文件夹（此前配置SSH时会生成该文件夹）</strong></p>
-<p>在 .ssh 文件夹中新建文本文件 config ,不带后缀（可以新建文本文档，去掉 .txt 后缀）<br>打开 config 文件，输入以下内容，保存后即可，其中<a href="mailto:&#120;&#x78;&#120;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#120;&#x78;&#120;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a> 为你自己的邮箱</p>
+<p>在 .ssh 文件夹中新建文本文件 config ,不带后缀（可以新建文本文档，去掉 .txt 后缀）<br>打开 config 文件，输入以下内容，保存后即可，其中<a href="mailto:&#120;&#x78;&#x78;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#120;&#x78;&#x78;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a> 为你自己的邮箱</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User xxx@qq.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
 
 <p><strong>修改hosts文件</strong></p>
 <p>操作系统中 hosts 文件的权限优先级高于DNS服务器，在 C:\Windows\System32\drivers\etc 目录下找到并修改 hosts 文件，增加一条 github.com 的域名映射可以解决。</p>
 <p><img src="/2021/11/24/Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330165253897.png" alt="image-20250330165253897"></p>
 <p>最后，输入 hexo d 就能够上传部署成功了！</p>
+<h3 id="10-测试-SSH-连接到-GitHub"><a href="#10-测试-SSH-连接到-GitHub" class="headerlink" title="10.测试 SSH 连接到 GitHub"></a>10.测试 SSH 连接到 GitHub</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -vT git@github.com</span><br></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a><img src="/./image-20250330181943590.png" alt="image-20250330181943590"></h4><h3 id="11-增加新的页面"><a href="#11-增加新的页面" class="headerlink" title="11.增加新的页面"></a>11.增加新的页面</h3><p>如增加标签页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -378,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85-Hexo"><span class="nav-number">2.</span> <span class="nav-text">2. 安装 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">3. 初始化博客项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">4. 项目目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">5. 生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">6.</span> <span class="nav-text">6. 本地预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">7.</span> <span class="nav-text">7.提交到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-number">8.</span> <span class="nav-text">8.切换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%A7%A3%E5%86%B3hexo-d%E5%BC%82%E5%B8%B8"><span class="nav-number">9.</span> <span class="nav-text">9.解决hexo d异常</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85-Hexo"><span class="nav-number">2.</span> <span class="nav-text">2. 安装 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">3. 初始化博客项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">4. 项目目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">5. 生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">6.</span> <span class="nav-text">6. 本地预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">7.</span> <span class="nav-text">7.提交到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-number">8.</span> <span class="nav-text">8.切换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%A7%A3%E5%86%B3hexo-d%E5%BC%82%E5%B8%B8"><span class="nav-number">9.</span> <span class="nav-text">9.解决hexo d异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E6%B5%8B%E8%AF%95-SSH-%E8%BF%9E%E6%8E%A5%E5%88%B0-GitHub"><span class="nav-number">10.</span> <span class="nav-text">10.测试 SSH 连接到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">10.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%9A%84%E9%A1%B5%E9%9D%A2"><span class="nav-number">11.</span> <span class="nav-text">11.增加新的页面</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
