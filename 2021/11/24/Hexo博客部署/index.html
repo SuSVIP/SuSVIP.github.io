@@ -290,7 +290,7 @@
 <p>重新执行生成命令<code>hexo g</code>后，再启动本地预览<code>hexo s</code>，主题就变了</p>
 <p><img src="/./Hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/image-20250330152739768.png" alt="image-20250330152739768"></p>
 <h3 id="9-解决hexo-d异常"><a href="#9-解决hexo-d异常" class="headerlink" title="9.解决hexo d异常"></a>9.解决<code>hexo d</code>异常</h3><p><strong>C:\Users\Administrator.ssh 中找到.ssh文件夹（此前配置SSH时会生成该文件夹）</strong></p>
-<p>在 .ssh 文件夹中新建文本文件 config ,不带后缀（可以新建文本文档，去掉 .txt 后缀）<br>打开 config 文件，输入以下内容，保存后即可，其中<a href="mailto:&#120;&#120;&#x78;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;">&#120;&#120;&#x78;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;</a> 为你自己的邮箱</p>
+<p>在 .ssh 文件夹中新建文本文件 config ,不带后缀（可以新建文本文档，去掉 .txt 后缀）<br>打开 config 文件，输入以下内容，保存后即可，其中<a href="mailto:&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;</a> 为你自己的邮箱</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User xxx@qq.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
 
 <p><strong>修改hosts文件</strong></p>
