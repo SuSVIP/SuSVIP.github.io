@@ -107,6 +107,6 @@ theme: next
 deploy:
   type: git
   #repo: https://susvip.github.io/
-  repo: git@github.com:SuSVIP/SuSVIP.github.io.git
+  repo: https://github.com/SuSVIP/SuSVIP.github.io.git #git@github.com:SuSVIP/SuSVIP.github.io.git
   branch: master
   #branch: master
