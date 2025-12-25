@@ -1,7 +1,10 @@
 ---
 title: typroa使用技巧
 date: 2021-12-27 22:31:17
-tags:
+categories: 技术分享          #分类
+tags:                       #标签
+  - 技术
+  - 编程
 ---
 
 # 1.大纲：

@@ -1,7 +1,10 @@
 ---
-title: javase
+title: JavaSE
 date: 2021-12-13 22:22:30
-tags: javase
+categories: 编程             #分类
+tags:                       #标签
+  - Java
+  - JavaSE
 ---
 
 

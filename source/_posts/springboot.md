@@ -1,7 +1,10 @@
 ---
 title: springboot
 date: 2022-03-02 22:16:15
-tags:
+categories: 编程             #分类
+tags:                       #标签
+  - Java
+  - springboot
 ---
 
 #  

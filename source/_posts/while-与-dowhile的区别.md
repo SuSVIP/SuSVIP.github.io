@@ -3,7 +3,10 @@
 
 title: while 与 dowhile的区别
 date: 2021-12-09 22:17:16
-tags: javase
+categories: 编程         #分类
+tags:                       #标签
+  - Java
+  - JavaSE
 ---
 
 + 1.while是先判断在执行，dowhile是先执行在判断

@@ -1,7 +1,10 @@
 ---
 title: Mybatis01
 date: 2022-01-09 14:23:46
-tags:
+categories: 编程             #分类
+tags:                       #标签
+  - Java
+  - Mybatis
 ---
 
 ## 1、导入Maven依赖
