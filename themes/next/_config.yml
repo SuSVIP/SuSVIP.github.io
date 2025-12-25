@@ -117,8 +117,8 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  about: /about/ || fa fa-user
-  tags: /tags/ || fa fa-tags
+  about: /about/ || fa fa-user   # 格式：菜单名: 页面路径 || 图标（fa fa-user是Next内置的“用户”图标）
+  tags: /tags/ || fa fa-tags     # 标签
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
   schedule: /schedule/ || fa fa-calendar

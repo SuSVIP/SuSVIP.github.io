@@ -36,7 +36,7 @@ tags:
 mysql -V
 ```
 
-## 2、创建一个模块
+## xxxxxxxxxx st=>start: 开始框 ​**op**=>operation: 处理框 ​cond=>condition: 判断框(是或否?) ​sub1=>subroutine: 子流程 ​io=>inputoutput: 输入输出框 ​e=>**end**: 结束框 ​st->**op**->cond ​cond(yes)->io->e​ cond(no)->sub1(right)->**op** flow Created with Raphaël 2.2.0开始框处理框判断框(是或否?)输入输出框子流程ERROR: [Flowchart] h.shiftX is not a function
 
 项目结构
 

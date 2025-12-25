@@ -6,7 +6,7 @@ tags:
 
 Java Socket 可实现客户端--服务器间的双向实时通信。包中定义的两个类socket和ServerSocket，分别用来实现双向连接的client和server端。
 
-![image-20211228110323037](image-20211228110323037.png)
+![image-20211228110323037](Scoket测试/image-20211228110323037.png)
 
 # Socket 通信实现方法
 
