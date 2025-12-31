@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="下载MySQL免安装压缩包下载地址:https:&#x2F;&#x2F;downloads.mysql.com&#x2F;archives&#x2F;community&#x2F;  解压安装 接下来我们解压文件夹，这时我们解压的文件夹是没有my.ini文件和data目录，这时我们需要自己创建my.ini文件,data文件后期回自动生成。   新建配置my.ini文件，并添加配置信息，如下： 123456789101112131415161718">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL本地部署">
+<meta property="og:url" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="下载MySQL免安装压缩包下载地址:https:&#x2F;&#x2F;downloads.mysql.com&#x2F;archives&#x2F;community&#x2F;  解压安装 接下来我们解压文件夹，这时我们解压的文件夹是没有my.ini文件和data目录，这时我们需要自己创建my.ini文件,data文件后期回自动生成。   新建配置my.ini文件，并添加配置信息，如下： 123456789101112131415161718">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403075033221.png">
+<meta property="og:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403075351251.png">
+<meta property="og:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403080030078.png">
+<meta property="og:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403082404498.png">
+<meta property="og:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403083102505.png">
+<meta property="article:published_time" content="2025-12-30T13:31:49.000Z">
+<meta property="article:modified_time" content="2025-12-31T06:38:03.098Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403075033221.png">
+
+
+<link rel="canonical" href="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/","path":"2025/12/30/MySQL本地部署/","title":"MySQL本地部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MySQL本地部署 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDMySQL%E5%85%8D%E5%AE%89%E8%A3%85%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">下载MySQL免安装压缩包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">解压安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">初始化服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">4.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL本地部署 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL本地部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-30 21:31:49" itemprop="dateCreated datePublished" datetime="2025-12-30T21:31:49+08:00">2025-12-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-31 14:38:03" itemprop="dateModified" datetime="2025-12-31T14:38:03+08:00">2025-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="下载MySQL免安装压缩包"><a href="#下载MySQL免安装压缩包" class="headerlink" title="下载MySQL免安装压缩包"></a>下载MySQL免安装压缩包</h1><p>下载地址:<a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a></p>
+<p><img src="MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/image-20250403075033221.png" alt="image-20250403075033221"></p>
+<h1 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h1><ul>
+<li><p>接下来我们解压文件夹，这时我们解压的文件夹是没有my.ini文件和data目录，这时我们需要自己创建my.ini文件,data文件后期回自动生成。</p>
+<p><img src="./image-20250403075351251.png" alt="image-20250403075351251"></p>
+</li>
+<li><p>新建配置my.ini文件，并添加配置信息，如下：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[Client]</span><br><span class="line"><span class="params">#</span>设置3306端口</span><br><span class="line">port = 3306</span><br><span class="line"> </span><br><span class="line">[mysqld]</span><br><span class="line">bind-address=0.0.0.0</span><br><span class="line"><span class="params">#</span>设置3306端口</span><br><span class="line">port = 3306</span><br><span class="line"><span class="params">#</span> 设置mysql的安装目录</span><br><span class="line">basedir=E:<span class="keyword">\mysql</span>-8.0.28</span><br><span class="line"><span class="params">#</span> 设置mysql数据库的数据的存放目录</span><br><span class="line">datadir=E:<span class="keyword">\mysql</span>-8.0.28<span class="keyword">\data</span></span><br><span class="line"><span class="params">#</span> 允许最大连接数</span><br><span class="line">max<span class="built_in">_</span>connections=200</span><br><span class="line"><span class="params">#</span> 服务端使用的字符集默认为8比特编码的latin1字符集</span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="params">#</span> 创建新表时将使用的默认存储引擎</span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line">early-plugin-load=&quot;&quot;</span><br><span class="line">skip-grant-tables</span><br><span class="line"> </span><br><span class="line">[mysql]</span><br><span class="line"><span class="params">#</span> 设置mysql客户端默认字符集</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+
+<p>**注意：**下面两个路径改为自己的路径</p>
+<p>设置mysql的安装目录:<code>basedir=E:\mysql-8.0.28</code> #</p>
+<p>设置mysql数据库的数据的存放目录:<code>datadir=E:\mysql-8.0.28\data</code></p>
+</li>
+<li><p>以”管理员身份”运行命令提示符cmd，进入安装解压的mysql的bin目录下:<br><img src="./image-20250403080030078.png" alt="image-20250403080030078"></p>
+</li>
+</ul>
+<h1 id="初始化服务"><a href="#初始化服务" class="headerlink" title="初始化服务"></a>初始化服务</h1><ul>
+<li><p>执行命令保存一下初始密码：</p>
+<p><code>mysqld --initialize --console</code><br><img src="./image-20250403082404498.png" alt="image-20250403082404498"></p>
+<p>**注意：**若之前安装过MySQL，则data文件夹是有文件的。此时输入上述命令会报错，因此需要把data文件夹的内容都删除或直接删除data文件夹。</p>
+</li>
+<li><p>安装服务</p>
+<p><code>mysqld --install [服务名]</code><br>注意:<code>mysqld --remove [服务名]</code> 为删除服务<br>  <img src="./image-20250403083102505.png" alt="image-20250403083102505"></p>
+</li>
+<li><p>更改密码</p>
+<p>先输入<code>mysql -u root -p</code></p>
+<p>然后将刚才保存的密码输入登录进入mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;youpassword&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><code>youpassword</code>是你要修改的密码</p>
+</li>
+</ul>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>允许外部链接数据库:<code>update user set host =&#39;%&#39; where user =&#39;root&#39; and host = &#39;localhost&#39;;</code></p>
+<p>刷新权限:<code>FLUSH PRIVILEGES;</code></p>
+<p>数据库授权:<code>GRANT ALL PRIVILEGES ON . TO ‘root’@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION;</code></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/matts-my/articles/18000380">mysql8免安装版安装配置教程</a></p>
+<p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/lhboke/p/18289027">Mysql 5.7 免安装版windows安装完整教程</a></p>
+<p> <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2109715?from=15425">Navicat无法连接mysql</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/25/DELETE%E3%80%81TRUNCATE%E3%80%81DROP-%E5%AF%B9%E6%AF%94/" rel="prev" title="DELETE、TRUNCATE、DROP 对比">
+                  <i class="fa fa-angle-left"></i> DELETE、TRUNCATE、DROP 对比
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

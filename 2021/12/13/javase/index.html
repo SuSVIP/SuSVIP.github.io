@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="正则表达式&#x3D;&#x3D;正则表达式以“^”开头，“$”结尾&#x3D;&#x3D;   字符集：     [1234] 1,2,3,4之一    [^12] 除了1，2   [1-5] 1,2,3,4,5   [a-f] a-f之间   [0-9a-fA-F] 一个 16 进制字符   0[xX][0-9a-fA-F]{1,8} 表示整数的 16 进制数表达式   [\w-]{8,15}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE">
+<meta property="og:url" content="http://example.com/2021/12/13/javase/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="正则表达式&#x3D;&#x3D;正则表达式以“^”开头，“$”结尾&#x3D;&#x3D;   字符集：     [1234] 1,2,3,4之一    [^12] 除了1，2   [1-5] 1,2,3,4,5   [a-f] a-f之间   [0-9a-fA-F] 一个 16 进制字符   0[xX][0-9a-fA-F]{1,8} 表示整数的 16 进制数表达式   [\w-]{8,15}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229102332013.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229105248256.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229105957150.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229110330015.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229112031245.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229112115002.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211229143728915.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230092121104.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230114238379.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/image-20211230130445718.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230131037918.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230131307481.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230132553895.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230132832984.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230132914591.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230133006808.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230140905541.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230144112552.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230150759284.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211230150903771.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211229101612306.png">
+<meta property="og:image" content="http://example.com/2021/12/13/javase/javase/image-20211229101638924.png">
+<meta property="article:published_time" content="2021-12-13T14:22:30.000Z">
+<meta property="article:modified_time" content="2025-12-31T06:22:00.932Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JavaSE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/12/13/javase/image-20211229102332013.png">
+
+
+<link rel="canonical" href="http://example.com/2021/12/13/javase/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/13/javase/","path":"2021/12/13/javase/","title":"JavaSE"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaSE | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%EF%BC%88Collection-%E5%92%8C-Map%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">集合框架（Collection 和 Map）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E6%B3%9B%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">Java 泛型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="nav-number">4.</span> <span class="nav-text">集合的迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E8%BF%AD%E4%BB%A3%EF%BC%8C%E6%98%AF%E4%B8%80%E7%A7%8D%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">集合的迭代，是一种遍历算法。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9AIterator"><span class="nav-number">4.1.1.</span> <span class="nav-text">案例：Iterator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB-Collections"><span class="nav-number">4.2.</span> <span class="nav-text">集合的工具类 Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9ACollections"><span class="nav-number">4.2.1.</span> <span class="nav-text">案例：Collections</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E8%A1%A5%E9%81%97"><span class="nav-number">5.</span> <span class="nav-text">集合补遗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%A4%8D%E5%88%B6"><span class="nav-number">5.1.</span> <span class="nav-text">集合复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%8C%96%EF%BC%88%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">同步化（线程安全）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8E%E9%9B%86%E5%90%88%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.3.</span> <span class="nav-text">数组与集合的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection-%E4%B8%8E-Collections"><span class="nav-number">5.4.</span> <span class="nav-text">Collection 与 Collections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="nav-number">5.5.</span> <span class="nav-text">Map 的迭代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F"><span class="nav-number">6.</span> <span class="nav-text">时间日期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E7%9A%84%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">6.1.</span> <span class="nav-text">日期的输入与输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%EF%BC%88Exception%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">异常（Exception）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">7.1.</span> <span class="nav-text">异常的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="nav-number">7.2.</span> <span class="nav-text">自定义异常</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#File"><span class="nav-number">8.</span> <span class="nav-text">File</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="nav-number">8.1.</span> <span class="nav-text">1.Java 文件系统管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File-%E7%B1%BB%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">8.1.1.</span> <span class="nav-text">File 类的用途</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-java-io-File-%E5%9F%BA%E6%9C%AC-API"><span class="nav-number">8.2.</span> <span class="nav-text">2.java.io.File 基本 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%9B%9E%E8%B0%83%E6%A8%A1%E5%BC%8F%E5%92%8C-FileFilter"><span class="nav-number">8.3.</span> <span class="nav-text">3.回调模式和 FileFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-RandomAccessFile"><span class="nav-number">8.4.</span> <span class="nav-text">4.RandomAccessFile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E5%86%99%E5%85%A5%E6%96%B9%E6%B3%95"><span class="nav-number">8.4.1.</span> <span class="nav-text">4.1写入方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-number">8.4.2.</span> <span class="nav-text">4.2读取文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">8.5.</span> <span class="nav-text">5.序列化与基本类型序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-IO-%E6%B5%81-InputStream-OutputStream"><span class="nav-number">8.6.</span> <span class="nav-text">&#x3D;&#x3D;6.IO 流 (InputStream, OutputStream)&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-FileInputStream"><span class="nav-number">8.7.</span> <span class="nav-text">7.FileInputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-FileOutputStream"><span class="nav-number">8.8.</span> <span class="nav-text">8.FileOutputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-DataOutputStream"><span class="nav-number">8.9.</span> <span class="nav-text">9.DataOutputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-DataInputStream"><span class="nav-number">8.10.</span> <span class="nav-text">10.DataInputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-BufferedInputStream-BufferedOutputStream"><span class="nav-number">8.11.</span> <span class="nav-text">11.BufferedInputStream &amp;&amp; BufferedOutputStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="nav-number">8.12.</span> <span class="nav-text">12.文件复制实现与优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E6%96%87%E5%AD%97%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-number">8.13.</span> <span class="nav-text">13.字符串的序列化（文字的编码方案）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E5%AD%97%E7%AC%A6%E6%B5%81-Reader-Writer"><span class="nav-number">8.14.</span> <span class="nav-text">14.字符流(Reader Writer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0-Reader-Writer"><span class="nav-number">8.15.</span> <span class="nav-text">15.字符流的基本实现 Reader Writer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8-BufferedReader"><span class="nav-number">8.16.</span> <span class="nav-text">16.字符流的过滤器 BufferedReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8-PrintWriter"><span class="nav-number">8.17.</span> <span class="nav-text">17.&#x3D;&#x3D;字符流的过滤器 PrintWriter&#x3D;&#x3D;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">对象的序列化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%85%E5%B1%82%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B7%B1%E5%B1%82%E5%A4%8D%E5%88%B6"><span class="nav-number">10.</span> <span class="nav-text">浅层复制与深层复制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">11.</span> <span class="nav-text">流的过滤器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5"><span class="nav-number">12.</span> <span class="nav-text">Java 多线程编程概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">13.</span> <span class="nav-text">Java 创建一个线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">14.</span> <span class="nav-text">线程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#New-%E6%96%B0%E5%BB%BA%E7%8A%B6%E6%80%81"><span class="nav-number">14.1.</span> <span class="nav-text">New                        新建状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runnable-%E5%8F%AF%E8%BF%90%E8%A1%8C%EF%BC%88%E5%B0%B1%E7%BB%AA%EF%BC%89%E7%8A%B6%E6%80%81"><span class="nav-number">14.2.</span> <span class="nav-text">Runnable              可运行（就绪）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-%E8%BF%90%E8%A1%8C%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%EF%BC%89%E7%8A%B6%E6%80%81"><span class="nav-number">14.3.</span> <span class="nav-text">Running                 运行（正在运行）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block-%E9%98%BB%E5%A1%9E%EF%BC%88%E6%8C%82%E8%B5%B7%EF%BC%89%E7%8A%B6%E6%80%81"><span class="nav-number">14.4.</span> <span class="nav-text">Block                      阻塞（挂起）状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dead-%E6%AD%BB%E4%BA%A1%E7%8A%B6%E6%80%81"><span class="nav-number">14.5.</span> <span class="nav-text">Dead                       死亡状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">15.</span> <span class="nav-text">线程状态管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E5%87%BA-CPU-Thread-yield"><span class="nav-number">15.1.</span> <span class="nav-text">让出 CPU       Thread.yield()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%91%E7%9C%A0-Thread-sleep-times"><span class="nav-number">15.2.</span> <span class="nav-text">休眠                Thread.sleep(times)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%8F%8A%E6%96%B9%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">线程的常用属性及方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Socket"><span class="nav-number">17.</span> <span class="nav-text">Socket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8BTCP"><span class="nav-number">17.1.</span> <span class="nav-text">单线程TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">17.1.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">17.1.2.</span> <span class="nav-text">客户端</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/javase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JavaSE | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaSE
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-13 22:22:30" itemprop="dateCreated datePublished" datetime="2021-12-13T22:22:30+08:00">2021-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-31 14:22:00" itemprop="dateModified" datetime="2025-12-31T14:22:00+08:00">2025-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p><strong>&#x3D;&#x3D;正则表达式以“^”开头，“$”结尾&#x3D;&#x3D;</strong> </p>
+<ul>
+<li><strong>字符集：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">[1234]</th>
+<th align="left">1,2,3,4之一</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>[^12]</strong></td>
+<td align="left"><strong>除了1，2</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[1-5]</strong></td>
+<td align="left"><strong>1,2,3,4,5</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[a-f]</strong></td>
+<td align="left"><strong>a-f之间</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[0-9a-fA-F]</strong></td>
+<td align="left"><strong>一个 16 进制字符</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>0[xX][0-9a-fA-F]{1,8}</strong></td>
+<td align="left"><strong>表示整数的 16 进制数表达式</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>[\w-]{8,15}</strong></td>
+<td align="left"><strong>表示 8-15 个人以字符、下划线、数字及“-”</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>预定义字符集:</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>\d</th>
+<th>表示[0-9]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>\w</strong></td>
+<td><strong>表示单词字符 [0-9a-zA-Z_] 注：包含下划线“_”</strong></td>
+</tr>
+<tr>
+<td><strong>\s</strong></td>
+<td><strong>表示匹配空白: \t \n \r \b \p</strong></td>
+</tr>
+<tr>
+<td><strong>.</strong></td>
+<td><strong>任意字符</strong></td>
+</tr>
+<tr>
+<td><strong>\D</strong></td>
+<td><strong>(不常用)表示非数字</strong></td>
+</tr>
+<tr>
+<td><strong>\W</strong></td>
+<td><strong>(不常用)表示非单词字符 [0-9a-zA-Z_]</strong></td>
+</tr>
+<tr>
+<td><strong>\S</strong></td>
+<td><strong>(不常用)表示非空白</strong></td>
+</tr>
+<tr>
+<td><strong>{n}</strong></td>
+<td><strong>表示数词 n 个，比如表示“5 个以上”用{5，}</strong></td>
+</tr>
+<tr>
+<td><strong>{m,n}</strong></td>
+<td><strong>表示数词 m 到 n 个</strong></td>
+</tr>
+<tr>
+<td><strong>?</strong></td>
+<td><strong>表示能出现 0 到 1 次 {0，1}</strong></td>
+</tr>
+<tr>
+<td><strong>+</strong></td>
+<td><strong>表示能出现 1 到 n 次 {1，}</strong></td>
+</tr>
+<tr>
+<td>*****</td>
+<td><strong>表示能出现 0 到 n 次 {0，}</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>常用正则表达式写法</strong></li>
+</ul>
+<p> <strong> 邮政编码                                 ^[0-9][0-9][0-9][0-9][0-9][0-9]$</strong> </p>
+<p>​                                                  【解释】0-9 的任意数字可出现 6 次 </p>
+<p>​                                                   ^[0-9]{6}$ </p>
+<p>​                                                  【解释】0-9 的任意数字可出现 6 次 </p>
+<p>​                                                 ^\d{6}$ 【解释】0-9 的任意数字可出现 6 次 </p>
+<p><strong> 用户名规则                           ^\w{8,10}$</strong> </p>
+<p>​                                                【解释】可出现 8-10 个单词戒字符</p>
+<p>​                                                    +86 13912345678 </p>
+<p><strong> 电话号码                              ^(+86|0086)?\s?\d{11}$</strong> </p>
+<p>​                                                 【解释】 “+”特殊字符，需要转义”+“表示”加号” </p>
+<p>​                                                 +86                      表示出现”+86”这几个字符 </p>
+<p>​                                                 (+86|0086)?       表示”+86”戒”0086”出现 0-1 次 </p>
+<p>​                                                 \s?                        表示空白(空格)出现 0-1 次</p>
+<p>​                                                  \d{11}                 表示出现 11 位数字</p>
+<p><strong> 身份证号码</strong>                                <strong>^\d{15}(\d{2}[0-9xX])?$</strong></p>
+<p><em><em> 一个点的坐标                        ^\d+(,\s</em>|\s+)\d+$</em>* </p>
+<p>​                                               【解释】 \d+               表示出现 1 个及以上的数字</p>
+<p>​                                                              (,\s*|\s+)      表示出现“逗号和 0 个及以上的空 白”戒“1 个以上的空白</p>
+<p>​                                                             \d+                表示出现 1 个及以上的数字</p>
+<p>​                                                    2011-01-30</p>
+<p><strong> 日期                                         ^\d{4}-\d{2}-\d{2}$</strong> </p>
+<p>​                                                    <strong>^\d{4}(-\d{2}){2}$</strong></p>
+<p>​                                               192.168.0.2 </p>
+<p><strong> IP 地址                              ^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$</strong></p>
+<p>​                                              <strong>^\d{1,3}(.\d{1,3}){3}$ ^(\d{1,3}.){3}\d{1,3}$</strong>     “.”是特殊字符，需要转义“.”</p>
+<h1 id="集合框架（Collection-和-Map）"><a href="#集合框架（Collection-和-Map）" class="headerlink" title="集合框架（Collection 和 Map）"></a>集合框架（Collection 和 Map）</h1><p>集合框架包括集合不映射（Collection and Map）, 以及它们的子类（容器类）</p>
+<ul>
+<li><strong>List</strong> 元素有先后次序的集合, 元素有 index 位置, 元素可以重复，继承自 Collection 接口<ul>
+<li>实现类: ArrayList, Vector, LinkedList</li>
+</ul>
+</li>
+<li><strong>Set</strong> 元素无续,不能重复添加, 是数学意义上的集合, 继承自 Collection 接口 <ul>
+<li>实现类: HashSet(是一个只有 Key 的 HashMap)</li>
+</ul>
+</li>
+<li><strong>Collection</strong> 集概念, 没有说明元素是否重复和有序, 使用集合的跟接口, 很少直接使用 其他集合都是实现类: ArrayList, HashSet</li>
+<li><strong>Map</strong> 描述了（key： value）成对放置的集合，key 不重复，Value 可以重复（key 重复算一 个）<ul>
+<li>实现类: HashMap(散列表算法实现)</li>
+<li>TreeMap(二叉排序树实现,利用 Key 排序) </li>
+<li>Map 适合检查查找</li>
+</ul>
+</li>
+</ul>
+<p>集合（Collection）框架，掌握常用的 3 个即可，如下图所示：</p>
+<p><img src="image-20211229102332013.png" alt="image-20211229102332013"></p>
+<p><strong>Collection</strong> 接口              表示集合的概念</p>
+<p> List 接口 </p>
+<p>Set 接口</p>
+<p><strong>List 接口</strong>                          表示有序线性表的概念</p>
+<p>ArrayList                                  底层实现是数组 </p>
+<p>LinkedList                                底层实现是链表</p>
+<p><strong>Set 接口</strong>                           表示无序不重复的概念 </p>
+<p>HashSet</p>
+<h1 id="Java-泛型"><a href="#Java-泛型" class="headerlink" title="Java 泛型"></a>Java 泛型</h1><p><strong>泛型</strong>是 Java5 以后提出的语法现象，作用是在<strong>编译期</strong>检查的类型约束（运行期不检查泛型） 泛型可以用来约束类中元素的类型</p>
+<h1 id="集合的迭代"><a href="#集合的迭代" class="headerlink" title="集合的迭代"></a>集合的迭代</h1><h2 id="集合的迭代，是一种遍历算法。"><a href="#集合的迭代，是一种遍历算法。" class="headerlink" title="集合的迭代，是一种遍历算法。"></a>集合的迭代，是一种遍历算法。</h2><ol>
+<li><p>迭代操作举例：播放列表的“逐个播放”；将扑克牌“逐一发放”</p>
+</li>
+<li><p>java 使用 Iterator 接口描述了迭代模式操作 </p>
+<p>Iterator 中的方法，与门为 <strong>while 循环设计</strong></p>
+</li>
+<li><p>Iterator 的实例可以从<strong>集合对象</strong>获得，是这个集合的一个元素序列视图，默认包含一个<strong>操作游标</strong>（在第一个元素之前）</p>
+<p>**hasNext()**方法，可以检查游标是否有下一个元素</p>
+<p><strong>next()</strong> 方法，移动游标到下一个元素，并丏返回这个元素引用 使用 <strong>while 循环</strong>配合这个两个方法, 可以迭代处理集合的所有元素 </p>
+</li>
+<li><p>迭代时可以使用迭代器 remove() 方法删除刚刚迭代的元素在迭代过程中</p>
+<p><strong>迭代时不能使用集合方法</strong>(add, remove, set) 更改集合元素</p>
+</li>
+</ol>
+<h3 id="案例：Iterator"><a href="#案例：Iterator" class="headerlink" title="案例：Iterator"></a>案例：Iterator</h3><p><img src="image-20211229105248256.png" alt="image-20211229105248256"></p>
+<p><img src="image-20211229105957150.png" alt="image-20211229105957150"></p>
+<h2 id="集合的工具类-Collections"><a href="#集合的工具类-Collections" class="headerlink" title="集合的工具类 Collections"></a>集合的工具类 Collections</h2><p>同数组的工具类 Arrays 相同，集合的工具类为 Collections，其中提供了许多的方法，诸如排序、 二分查找、打乱、填充等操作。</p>
+<h3 id="案例：Collections"><a href="#案例：Collections" class="headerlink" title="案例：Collections"></a>案例：Collections</h3><p><img src="image-20211229110330015.png" alt="image-20211229110330015"></p>
+<p>Collections.sort()底层调用了 str.compareTo()方法比较大小</p>
+<h1 id="集合补遗"><a href="#集合补遗" class="headerlink" title="集合补遗"></a>集合补遗</h1><h2 id="集合复制"><a href="#集合复制" class="headerlink" title="集合复制"></a>集合复制</h2><p><strong>集合复制</strong>，Java 默认的复制规则是浅表(浅层)复制</p>
+<p>集合复制有 2 种方式：</p>
+<ol>
+<li>clone() 方法  clone()方法是 Object 定义的 </li>
+<li>使用”复制构造器”</li>
+</ol>
+<ul>
+<li>Map map &#x3D; new HashMap();</li>
+</ul>
+<p>​       Map map2 &#x3D; new HashMap(map);</p>
+<ul>
+<li>List list1 &#x3D; new ArrayList();</li>
+</ul>
+<p>​       List list2 &#x3D; new LinkedList(list1);</p>
+<p>浅表复制_clone()方法</p>
+<p>浅表复制_”复制构造器”</p>
+<h2 id="同步化（线程安全）"><a href="#同步化（线程安全）" class="headerlink" title="同步化（线程安全）"></a>同步化（线程安全）</h2><p>同步化解决方案：</p>
+<ol>
+<li>Collections.synchronizedList()方法可以将非线程安全的list 包装为线程安全的</li>
+</ol>
+<ul>
+<li>List list &#x3D; new ArrayList();</li>
+</ul>
+<p>​       list &#x3D; Collections.synchronizedList(list); &#x2F;&#x2F;转换以后就相当于 Vector</p>
+<ol>
+<li>Collections.synchronizedMap()方法可以将非线程安全的 map 包装为线程安全的</li>
+</ol>
+<ul>
+<li>HashMap map &#x3D; new HashMap();</li>
+</ul>
+<p>​       map &#x3D; Collections.synchronizedMap(map);</p>
+<h2 id="数组与集合的转换"><a href="#数组与集合的转换" class="headerlink" title="数组与集合的转换"></a>数组与集合的转换</h2><p>数组转 List</p>
+<p><img src="image-20211229112031245.png" alt="image-20211229112031245"></p>
+<p>集合转数组</p>
+<p><img src="image-20211229112115002.png" alt="image-20211229112115002"></p>
+<h2 id="Collection-与-Collections"><a href="#Collection-与-Collections" class="headerlink" title="Collection 与 Collections"></a>Collection 与 Collections</h2><p>面试可能会遇到的题目，Collection 和 Collections 的区别是什么？</p>
+<ul>
+<li><p>Collection 抽象的集合概念，实现它的有 List 和 Set </p>
+</li>
+<li><p>Collections 集合静态工具类, 包含集合的工具方法，如 sort()等</p>
+</li>
+</ul>
+<h2 id="Map-的迭代"><a href="#Map-的迭代" class="headerlink" title="Map 的迭代"></a>Map 的迭代</h2><ul>
+<li><p>对 key:value 进行迭代 map.entrySet(); </p>
+</li>
+<li><p>对 key 进行迭代 map.keySet(); </p>
+</li>
+<li><p>对 value 进行迭代 map.values();</p>
+</li>
+</ul>
+<h1 id="时间日期"><a href="#时间日期" class="headerlink" title="时间日期"></a>时间日期</h1><ul>
+<li>Java 中的时间类有：Date 和 Calendar</li>
+<li>Java 中时间类的本质<ul>
+<li>Date &#x3D; long + 操作</li>
+<li>Calendar &#x3D; long + 操作</li>
+</ul>
+</li>
+<li>时间的标准有两种<ul>
+<li>（1970）GMT long</li>
+<li>（0）UTC long</li>
+</ul>
+</li>
+</ul>
+<h2 id="日期的输入与输出"><a href="#日期的输入与输出" class="headerlink" title="日期的输入与输出"></a>日期的输入与输出</h2><ul>
+<li><p>日期输出的本质是将 Date 转换为格式化的 String</p>
+</li>
+<li><p>日期输入的本质是将格式化的 String 转换为 Date</p>
+<ul>
+<li><p>java.text.SimpleDateFormat fmt &#x3D; new SimpleDateFormat(“yyyy-MM-dd”);</p>
+</li>
+<li><p>fmt.parse(String)可以实现将(合法)字符串解析为日期类型, 经常用于处理日期输入</p>
+<p>fmt.format(Date)可以把日期格式化为字符串用于输出处理</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="异常（Exception）"><a href="#异常（Exception）" class="headerlink" title="异常（Exception）"></a>异常（Exception）</h1><ol>
+<li><p>什么是异常？ 异常是行为（方法、过程）的意外结果 </p>
+</li>
+<li><p>一个方法如果抛出了异常，这个方法就必须声明异常的抛出 </p>
+</li>
+<li><p>异常的声明：在方法上声明方法的意外结果 如：</p>
+<ul>
+<li><p>User reg( String pwd, String email) throws UserExistException; </p>
+</li>
+<li><p>User login(String email, String pwd) throws NameOrPwdException;</p>
+</li>
+</ul>
+</li>
+<li><p>异常类一般继承于 Exception </p>
+</li>
+<li><p>调用抛出异常的方法，必须处理异常，有两种方式</p>
+<ul>
+<li>使用 try catch finally 捕获</li>
+<li>直接再抛出异常</li>
+</ul>
+</li>
+</ol>
+<p>​        处理异常的方式依赖于具体业务逻辑，可灵活处理</p>
+<ol start="2">
+<li>如果代码有异常发生，异常以后的代码将不再执行</li>
+</ol>
+<h2 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a>异常的分类</h2><p><img src="image-20211229143728915.png" alt="image-20211229143728915"></p>
+<p>关于异常的分类：</p>
+<ol>
+<li><p>Error 是 JVM（Java 虚拟机）中出现的不可恢复的错误</p>
+</li>
+<li><p>Exception 是类（Class）发生的异常 </p>
+<ul>
+<li><p>检查异常                编译期发生</p>
+</li>
+<li><p>非检查异常         （RuntimeException） 运行时发生</p>
+</li>
+</ul>
+</li>
+<li><p>请记住常见的几种 RuntimeException</p>
+</li>
+</ol>
+<p><strong>软件中会大量使用自定义异常</strong>，一般从 Exception 继承异常类命名要有实际意义, 一般都手工继承 父类的构造器。</p>
+<p>在类中点击【右键】Source -&gt; Generate Constructors from Superclass</p>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><h2 id="1-Java-文件系统管理"><a href="#1-Java-文件系统管理" class="headerlink" title="1.Java 文件系统管理"></a>1.Java 文件系统管理</h2><h3 id="File-类的用途"><a href="#File-类的用途" class="headerlink" title="File 类的用途"></a>File 类的用途</h3><p>java.io.File 用于表示文件（目录），也就是说程序员可以通过 File 类在程序中操作硬盘上的文件和 目录。</p>
+<p>File 类只用于表示文件（目录）的信息（名称、大小等），不能对文件的内容进行访问。</p>
+<h2 id="2-java-io-File-基本-API"><a href="#2-java-io-File-基本-API" class="headerlink" title="2.java.io.File 基本 API"></a>2.java.io.File 基本 API</h2><p>File 代表文件系统中对文件&#x2F;目录的管理操作（增删改查，CRUD） </p>
+<p>常用 API 方法：</p>
+<p> File(String) 指定文件名的构造器 </p>
+<p> long length() 文件的长度 </p>
+<p> long lastModified() </p>
+<p> String getName() </p>
+<p> String getPath() </p>
+<p> boolean exists() </p>
+<p> boolean dir.isFile() </p>
+<p> boolean dir.isDirectory() </p>
+<p> boolean mkdir() </p>
+<p> boolean mkdirs() </p>
+<p> boolean delete(); </p>
+<p> boolean createNewFile() throw IOException </p>
+<p> File[] listFile()</p>
+<h2 id="3-回调模式和-FileFilter"><a href="#3-回调模式和-FileFilter" class="headerlink" title="3.回调模式和 FileFilter"></a>3.回调模式和 FileFilter</h2><p>FileFilter 类是对操作文件的过滤，相当于命令：ls|grep patten</p>
+<p>API 方法：File[] listFile(FileFilter)</p>
+<p><strong>【案例】<strong>列出指定目录下所有的</strong>.java</strong> 文件</p>
+<p><img src="javase/image-20211230092121104.png" alt="image-20211230092121104"></p>
+<p>listFiles()方法会将 dir 中每个文件交给 accept()方法检测，如果返回 true，就作为方法的返 回结果元素</p>
+<p><strong>增强循环（foreach 循环）</strong>：JDK5 提供的简化版 for 循环</p>
+<p><strong>回调模式</strong>：accept()方法的调用属于回调模式</p>
+<h2 id="4-RandomAccessFile"><a href="#4-RandomAccessFile" class="headerlink" title="4.RandomAccessFile"></a>4.RandomAccessFile</h2><p>RandomAccessFile 类是 Java 提供的功能丰富的文件内容访问类，它提供了众多方法来访问文件 内容，既可以读取文件内容，也可以向文件输出数据，RandomAccessFile 支持“随机访问”方式，可 以访问文件的任意位置</p>
+<ol>
+<li><p>Java 文件模型 在硬盘上文件是 byte by byte 存储的，是数据的集合 </p>
+</li>
+<li><p>打开文件 </p>
+<p>有两种模式 “rw”（读写）、”r”（只读）</p>
+<p>RandomAccessFile raf &#x3D; new RandomAccessFile(file, “rw”);</p>
+<p>打开文件时候默认文件指针在开头 pointer&#x3D;0</p>
+</li>
+<li><p>) 写入方法 </p>
+<p>raf.write(int)可以将整数的“低八位”写入到文件中，同时指针自劢移劢到下一个位置, 准备再次写入</p>
+<p>&#x3D;&#x3D;注意：&#x3D;&#x3D;文件名的扩展名要明确指定, 没有默认扩展名现象！</p>
+<p> RandomAccessFile raf &#x3D; new RandomAccessFile(“Hello.java”, “rw”);</p>
+</li>
+<li><p>读取文件</p>
+<p>int b &#x3D; raf.read() 从文件中读取一个 byte(8 位) 填充到 int 的低八位, 高 24 位为 0, 返回值 范围正数: 0~255, 如果返回-1 表示读取到了文件末尾! 每次读取后自劢移劢文件指针, 准备 下次读取。</p>
+</li>
+<li><p>文件读写完成以后一定关闭文件</p>
+</li>
+</ol>
+<h3 id="4-1写入方法"><a href="#4-1写入方法" class="headerlink" title="4.1写入方法"></a><strong>4.1写入方法</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建目录</span></span><br><span class="line">     File demo=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;demo&quot;</span>);</span><br><span class="line">     <span class="keyword">if</span>(!demo.exists())&#123;</span><br><span class="line">         demo.mkdir();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//1.在demo文件夹下创建raf.dat</span></span><br><span class="line">     File file=<span class="keyword">new</span> <span class="title class_">File</span>(demo,<span class="string">&quot;raf.txt&quot;</span>);</span><br><span class="line">     <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">         file.mkdir();</span><br><span class="line">     &#125;</span><br><span class="line">     System.out.println(file.getCanonicalPath());</span><br><span class="line">     <span class="comment">// 2.打开这个文件,进行随机读写</span></span><br><span class="line">     RandomAccessFile raf=<span class="keyword">new</span> <span class="title class_">RandomAccessFile</span>(file,<span class="string">&quot;rw&quot;</span>);</span><br><span class="line">     <span class="comment">//输出默认的“游标”位置</span></span><br><span class="line">     <span class="comment">//System.out.println(raf.getFilePointer());//0</span></span><br><span class="line">     <span class="comment">//3.写入&#x27;A&#x27;和&#x27;B&#x27;</span></span><br><span class="line">     raf.write(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">     System.out.println(raf.getFilePointer());<span class="comment">//1</span></span><br><span class="line">     raf.write(<span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">     <span class="comment">//4.写入整数 0x7fffffff</span></span><br><span class="line">     <span class="type">int</span> i=<span class="number">0x7fffffff</span>;</span><br><span class="line">     raf.writeInt(i);</span><br><span class="line">     <span class="comment">//5.写入GBK编码的 &#x27;中&#x27;,GBK编码为d6d0</span></span><br><span class="line">     String s=<span class="string">&quot;中&quot;</span>;   <span class="comment">//默认系统编码为4e2d</span></span><br><span class="line">     <span class="comment">//5-1.得到“中”的GBK编码格式</span></span><br><span class="line">     <span class="type">byte</span>[] gbk=s.getBytes(<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">     raf.write(gbk);</span><br><span class="line">     System.out.println(raf.length());<span class="comment">//18</span></span><br><span class="line">     System.out.println(raf.getFilePointer());<span class="comment">//8 文件尾</span></span><br><span class="line">     <span class="comment">//移动游标到“头”</span></span><br><span class="line">     raf.seek(<span class="number">0</span>);</span><br><span class="line">     <span class="comment">//6.一次性读取全部内容到数组buf中</span></span><br><span class="line">     <span class="type">byte</span>[] buf=<span class="keyword">new</span> <span class="title class_">byte</span>[(<span class="type">int</span>)raf.length()];</span><br><span class="line">     <span class="comment">//6-1.从文件中读取内容，尽可能填满</span></span><br><span class="line">     raf.read(buf);</span><br><span class="line">     <span class="comment">//6-2.输出byte 数组,默认是10进制</span></span><br><span class="line">     System.out.println(Arrays.toString(buf));</span><br><span class="line">     <span class="comment">//6-3.输出16进制形式</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="type">byte</span> b:buf)&#123;</span><br><span class="line">         System.out.print(Integer.toHexString(Integer.parseInt((b &amp; <span class="number">0xff</span>)+<span class="string">&quot; &quot;</span>)));</span><br><span class="line">     &#125;</span><br><span class="line">     raf.close();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2读取文件"><a href="#4-2读取文件" class="headerlink" title="4.2读取文件"></a><strong>4.2读取文件</strong></h3><h2 id="5-序列化与基本类型序列化"><a href="#5-序列化与基本类型序列化" class="headerlink" title="5.序列化与基本类型序列化"></a>5.序列化与基本类型序列化</h2><ul>
+<li><p>将类型 int 转换为 4 byte，或将其它数据类型（如 long -&gt; 8 byte）的过程，即将数据转换 为 n 个 byte 序列叫序列化（数据 -&gt; n byte）</p>
+<p>如: 0x7fffffff -&gt; [ 7f ，ff， ff， ff ] </p>
+</li>
+<li><p>反序列化，将 n byte 转换为一个数据的过程（n byte -&gt; 数据）</p>
+<p>如: [ 7f ，ff， ff， ff ] -&gt; 0x7fffffff</p>
+</li>
+<li><p>RandomAccessFile 提供基本类型的读写方法，可以将基本类型数据序列化到文件或者将文 件内容反序列化为数据</p>
+</li>
+</ul>
+<h2 id="6-IO-流-InputStream-OutputStream"><a href="#6-IO-流-InputStream-OutputStream" class="headerlink" title="&#x3D;&#x3D;6.IO 流 (InputStream, OutputStream)&#x3D;&#x3D;"></a>&#x3D;&#x3D;6.IO 流 (InputStream, OutputStream)&#x3D;&#x3D;</h2><p>Java 中的 IO 流是实现输入&#x2F;输出的基础。</p>
+<ol>
+<li>InputStream、OutputStream 都是抽象类</li>
+</ol>
+<ul>
+<li><p>InputStream 抽象了应用程序读取数据的方式 </p>
+</li>
+<li><p>OutputStream 抽象类应用程序写出数据的方式</p>
+</li>
+</ul>
+<ol start="2">
+<li>EOF &#x3D; End of File &#x3D; -1</li>
+<li>&#x3D;&#x3D;输入流基本方法:&#x3D;&#x3D;</li>
+</ol>
+<ul>
+<li><p>int b &#x3D; in.read() 读取一个 byte 无符号填充到 int 低八位,-1 是 EOF</p>
+</li>
+<li><p>in.read(byte[] buf) 读取数据填充到 buf 中 </p>
+</li>
+<li><p>in.read(byte[] buf, int start, int size) 读取数据填充到 buf 中 </p>
+</li>
+<li><p>in.skip(long n)  in.close();</p>
+</li>
+</ul>
+<ol start="4">
+<li>&#x3D;&#x3D;输出流的基本方法:&#x3D;&#x3D;</li>
+</ol>
+<ul>
+<li><p>out.write(int b) 写出一个 byte 到流 b 的低八位写出 </p>
+</li>
+<li><p>out.write(byte[] buf) 将缓冲区 buf 都写入到流 </p>
+</li>
+<li><p>out.write(byte[] buf, int start, int size) 将 buf 的一部分写到流中 </p>
+</li>
+<li><p>out.flush() 清理缓冲 </p>
+</li>
+<li><p>out.close();</p>
+</li>
+</ul>
+<p><img src="javase/image-20211230114238379.png" alt="image-20211230114238379"></p>
+<h2 id="7-FileInputStream"><a href="#7-FileInputStream" class="headerlink" title="7.FileInputStream"></a>7.FileInputStream</h2><p>文件输入流 FileInputStream 继承了 InputStream，FileInputStream 具体实现了在文件上读取 数据。</p>
+<p>IO 工具类中增加读取文件内容的方法 read(String filename)及重载方法 read(File file)，该方法 适用于读取小文件。</p>
+<p>IO 工具类</p>
+<p>printHex()方法实现功能：读取文件并且按照 HEX 输出, 每 10 byte 为一行。</p>
+<p>自定义 IO 工具类，printHex（String fileName）方法实现功能：读取指定文件内容，按照 16 进制输出到控制台</p>
+<p>printHex（String fileName）方法中添加业务逡辑：单位数前边补 0，如 8-&gt;08</p>
+<p>定义 printHex（String fileName）的重载方法：printHex（File file）和 printHex(InputStream in)</p>
+<p>printHex（String fileName）方法中添加业务逡辑：每输出 10byte，则换行</p>
+<h2 id="8-FileOutputStream"><a href="#8-FileOutputStream" class="headerlink" title="8.FileOutputStream"></a>8.FileOutputStream</h2><p>文件输出流 FileOutputStream 继承了 OutputStream， FileOutputStream 实现了向文件中写 出 byte 数据的方法。</p>
+<p>out.flash()方法表示清理缓存，在写代码中尽量加上，能保障可靠写</p>
+<p>文件输出流（FileOutputStream）的构造器，如果没有文件, 会自劢的创建文件！</p>
+<p>输出时默认是覆盖这个文件内容，如果需要追加内容，需要使用新的构造器</p>
+<p>boolean append &#x3D; true;</p>
+<p>new FileOutputStream(file, append);</p>
+<h2 id="9-DataOutputStream"><a href="#9-DataOutputStream" class="headerlink" title="9.DataOutputStream"></a>9.DataOutputStream</h2><p>DataOutputStream 和 DataInputStream 是对”流“功能的扩展，可以更方便的读取 int、long、 字符等类型数据。</p>
+<p>DataOutputStream 对基本的输出流功能扩展, 提供了基本数据类型的输出方法, 也就是基本类型 是序列化方法：</p>
+<p>writeInt() </p>
+<p>writeDouble() </p>
+<p>writeUTF()</p>
+<p>DataOutputStream 可以被理解为“过滤器”</p>
+<p><img src="image-20211230130445718.png" alt="image-20211230130445718"></p>
+<h2 id="10-DataInputStream"><a href="#10-DataInputStream" class="headerlink" title="10.DataInputStream"></a>10.DataInputStream</h2><p>DataInputStream 是对基本输入流（InputStream）功能的扩展，它提供基本类型的输入方法, 就 是基本类型的反序列化。</p>
+<p>DataInputStream 是过滤器，只是功能扩展，不能直接读取文件。 </p>
+<p>DataInputStream 提供的方法有</p>
+<p>readInt() </p>
+<p>readDouble()</p>
+<p><img src="javase/image-20211230131037918.png" alt="image-20211230131037918"></p>
+<h2 id="11-BufferedInputStream-BufferedOutputStream"><a href="#11-BufferedInputStream-BufferedOutputStream" class="headerlink" title="11.BufferedInputStream &amp;&amp; BufferedOutputStream"></a>11.BufferedInputStream &amp;&amp; BufferedOutputStream</h2><p>BufferedInputStream &amp;&amp; BufferedOutputStream 为 IO 操作提供了缓冲区，一般打开文件进行 写入戒读取操作时，都加上缓冲流，这种流模式是为了提高 IO（输入输出）的性能。</p>
+<p><img src="javase/image-20211230131307481.png" alt="image-20211230131307481"></p>
+<p>如图所示，我们想从应用程序中把数据放入文件，相当于将一缸水倒入另一个缸中：</p>
+<p> 仅使用 FOS 的 write()方法，相当于一滴水一滴水的”转移“ </p>
+<p> 使用 DOS 的 writeXxx()方法方便些，相当于一瓢一瓢的”转移“ </p>
+<p> 使用 BOS 的 writeXxx()方法更方便，相当于从 DOS 一瓢一瓢放入桶（BOS）中，再从桶（BOS） 中倒入另一个缸，性能提高了</p>
+<h2 id="12-文件复制实现与优化"><a href="#12-文件复制实现与优化" class="headerlink" title="12.文件复制实现与优化"></a>12.文件复制实现与优化</h2><p><img src="javase/image-20211230132553895.png" alt="image-20211230132553895"></p>
+<p>版本 03（常用写法） 效率最高，可拷贝大文件，使用了 byte[]数组作为一个“缓冲区”</p>
+<p>IOUtil类</p>
+<p><img src="javase/image-20211230132832984.png" alt="image-20211230132832984"></p>
+<p>测试类</p>
+<p><img src="javase/image-20211230132914591.png" alt="image-20211230132914591"></p>
+<p><img src="javase/image-20211230133006808.png" alt="image-20211230133006808"></p>
+<h2 id="13-字符串的序列化（文字的编码方案）"><a href="#13-字符串的序列化（文字的编码方案）" class="headerlink" title="13.字符串的序列化（文字的编码方案）"></a>13.字符串的序列化（文字的编码方案）</h2><ul>
+<li><p>Stirng 字符串本质上是 char[]</p>
+<ul>
+<li>将 char[] 转换成 byte 序列，就是字符串的编码, 就是字符串的序列化问题 </li>
+<li>char 类型是 16 位无符号整数, 值是 unicode 编码</li>
+</ul>
+</li>
+<li><p>UTF-16BE 编码方案</p>
+<ul>
+<li><p>UTF-16BE 编码方案，是将 16 位 char 从中间切开为 2 个 byte</p>
+</li>
+<li><p>UTF-16BE 是将 unicode 编码的 char[] 序列化为 byte[] 的编码方案</p>
+<p>如: char[] &#x3D; [‘A’,’B’,’中’] </p>
+<p>​       byte[] &#x3D; [00, 41, 00, 42, 4e, 2d]</p>
+</li>
+<li><p>UTF-16BE 编码能够支持 65535 个字符编码</p>
+</li>
+</ul>
+</li>
+<li><p>UTF-8 编码方案</p>
+<ul>
+<li>采用变长编码 1~N 方案, 其中英文占 1 个 byte，中文占 3 个 byte</li>
+</ul>
+</li>
+<li><p>较常用的编码</p>
+<ul>
+<li>GBK  中国国标，支持 20000+中日英韩字符，英文 1 位编码，中文 2 位<ul>
+<li>不 Unicode 编码不兼容，需要码表转换</li>
+<li>GB2312 简体中文编码</li>
+</ul>
+</li>
+<li>ISO8859-1  西欧常用字符</li>
+<li>UTF-8  Unicode 的一种边长字符编码，又称“万国码”</li>
+</ul>
+</li>
+</ul>
+<h2 id="14-字符流-Reader-Writer"><a href="#14-字符流-Reader-Writer" class="headerlink" title="14.字符流(Reader Writer)"></a>14.字符流(Reader Writer)</h2><ul>
+<li><p>字符的处理，一次处理一个字符（unicode 编码）</p>
+</li>
+<li><p>字符的底层仍然是基本的字节流</p>
+</li>
+<li><p>字符流的基本实现</p>
+<ul>
+<li>InputStreamReader             完成 byte 流解析为 char 流, 按照编码解析</li>
+<li>OutputStreamWriter            提供 char 流到 byte 流, 按照编码处理</li>
+</ul>
+</li>
+<li><p>字符流的过滤器</p>
+<p>是字符读写的功能扩展, 极大的方便了文本的读写操作</p>
+<ul>
+<li><p>BufferedReader : readLine()       一次读取一行 </p>
+</li>
+<li><p>PrintWriter: println()                     一次打印一行</p>
+</li>
+</ul>
+</li>
+<li><p>读取一个文本文件</p>
+<ul>
+<li><p>InputStream is &#x3D; new FileInputStream(“gbk.txt”);</p>
+<p> Reader in &#x3D; new InputStreamReader(is); </p>
+<p>BufferedReader reader &#x3D; new BufferedReader(in);</p>
+</li>
+<li><p>PrintWriter out &#x3D; new PrintWtirer( new OutputStreamWriter( new FileOutputStream(filename)));</p>
+</li>
+</ul>
+</li>
+<li><p>系统的默认编码，中文一般是 GBK</p>
+<ul>
+<li>String encoding&#x3D;System.getProperty(“file.encoding”);</li>
+</ul>
+</li>
+</ul>
+<h2 id="15-字符流的基本实现-Reader-Writer"><a href="#15-字符流的基本实现-Reader-Writer" class="headerlink" title="15.字符流的基本实现 Reader Writer"></a>15.字符流的基本实现 Reader Writer</h2><h2 id="16-字符流的过滤器-BufferedReader"><a href="#16-字符流的过滤器-BufferedReader" class="headerlink" title="16.字符流的过滤器 BufferedReader"></a>16.字符流的过滤器 BufferedReader</h2><h2 id="17-字符流的过滤器-PrintWriter"><a href="#17-字符流的过滤器-PrintWriter" class="headerlink" title="17.&#x3D;&#x3D;字符流的过滤器 PrintWriter&#x3D;&#x3D;"></a>17.&#x3D;&#x3D;字符流的过滤器 PrintWriter&#x3D;&#x3D;</h2><h1 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h1><p><strong>对象序列化</strong>，就是将 Object 转换为 byte 序列，反乊叫对象的反序列化。</p>
+<ul>
+<li>序列化流（ObjectOutputStream）, 是过滤流<ul>
+<li>ObjectOutputStream writeObject(Object)      序列化对象 </li>
+<li>ObjectInputStream readObject()                      对象的反序列化</li>
+</ul>
+</li>
+<li>序列化接口（Serializable）<ul>
+<li>对象必须实现“序列化接口”才能迚行序列化，否则将出现不能序列化的异常！  </li>
+<li>Serializable 是一个空的接口，没有任何方法，仅作为序列化的一个标识</li>
+</ul>
+</li>
+<li>JavaBean 规范规定，Java 类必须实现 Serializable 接口<ul>
+<li>Java API 中的类大多是符合 Java Bean 规范的, 基本都实现了 Serializable</li>
+</ul>
+</li>
+<li>对象的序列化和反序列化可以变相实现对象的深层复制</li>
+</ul>
+<h1 id="浅层复制与深层复制"><a href="#浅层复制与深层复制" class="headerlink" title="浅层复制与深层复制"></a>浅层复制与深层复制</h1><ul>
+<li><p>Java 的默认复制规则是浅层复制, 性能好, 但隔离性差 浅层复制现象, 只复制第一层对象 </p>
+</li>
+<li><p>利用序列化可以实现深层复制</p>
+</li>
+</ul>
+<h1 id="流的过滤器"><a href="#流的过滤器" class="headerlink" title="流的过滤器"></a>流的过滤器</h1><ul>
+<li><p>流的过滤器是流的功能扩展，需要基于基本的流，更加方便的操作 </p>
+</li>
+<li><p>一类是基本 byte 数据的处理 </p>
+<ul>
+<li><strong>BufferedInputStream</strong> </li>
+<li><del>ZipInputStream（了解）         解压缩流，能够方便的读取 Zip 压缩文件</del></li>
+<li><del>JarInputStream（了解）</del></li>
+<li><del>CipherInputStream（了解）   解密流，提供了对输入流的加密和解密的方法</del></li>
+</ul>
+</li>
+<li><p>一类是数据序列化功能扩展 </p>
+<ul>
+<li>DataInputStream               基本类型的 IO  </li>
+<li>ObjectInputStream            对象 IO </li>
+<li><strong>InputStreamReader</strong>           String(char[])</li>
+</ul>
+</li>
+</ul>
+<p><img src="javase/image-20211230140905541.png" alt="image-20211230140905541"></p>
+<h1 id="Java-多线程编程概念"><a href="#Java-多线程编程概念" class="headerlink" title="Java 多线程编程概念"></a>Java 多线程编程概念</h1><p>Java 语言的优势之一就是线程处理较为简单。</p>
+<p>一般操作系统都支持同时运行多个任务，一个任务通常就是一个<strong>程序</strong>，每个运行中的程序被称为一 个<strong>进程</strong>，当一个程序运行时，内部可能包含多个顺序执行流，每个顺序执行流就是一个<strong>线程</strong>。</p>
+<ol>
+<li><strong>程序</strong>         指令 + 数据的 byte 序列，如: qq.exe </li>
+<li><strong>进程</strong>        正在运行的程序, 是程序劢态的执行过程（运行于内存中） </li>
+<li><strong>线程</strong>        在进程内部，并发运程的过程（Java 中的方法可以看做线程） </li>
+<li><strong>并发</strong>        进程是并収运行的，OS 将时间划分为很多时间片段（时间片），尽可能均匀分配 给正在运行的程序， 微观上迚程走走停停，宏观上都在运行，这种都运行的现象叫并发，但是 不是绝对意义上的“同时发生</li>
+</ol>
+<h1 id="Java-创建一个线程"><a href="#Java-创建一个线程" class="headerlink" title="Java 创建一个线程"></a>Java 创建一个线程</h1><ol>
+<li><p>Thread 类 线程类（Thread）包含一个可以运行的过程（方法）：run()方法 </p>
+</li>
+<li><p>创建一个具体线程的步骤如下：</p>
+<p>第一，继承 Thread 类 </p>
+<p>第二，覆盖 run 方法（就是更新运行过程）, 实现用户自己的过程 </p>
+<p>第三，创建线程实例（就是创建一个线程） </p>
+<p>第四，使用线程实例的 start() 方法启劢线程, 启劢</p>
+</li>
+</ol>
+<p><strong>基本线程演示</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基本线程演示</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Person1 p1=<span class="keyword">new</span> <span class="title class_">Person1</span>();<span class="comment">//p1实例</span></span><br><span class="line">        Person2 p2=<span class="keyword">new</span> <span class="title class_">Person2</span>();<span class="comment">//p2实例</span></span><br><span class="line">        p1.start();</span><br><span class="line">        p2.start();</span><br><span class="line">        System.out.println(<span class="string">&quot;mainMethod over&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person1</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;<span class="number">3</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;谁啊&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person2</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;<span class="number">3</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;查水表的&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h1><p>线程的 5 中状态</p>
+<h2 id="New-新建状态"><a href="#New-新建状态" class="headerlink" title="New                        新建状态"></a>New                        新建状态</h2><p>当程序使用 new 关键字创建了一个线程后，该线程就处于新建状态，此时线程还未启劢， 当线程对象调用 start()方法时，线程启劢，迚入 Runnable 状态</p>
+<h2 id="Runnable-可运行（就绪）状态"><a href="#Runnable-可运行（就绪）状态" class="headerlink" title="Runnable              可运行（就绪）状态"></a>Runnable              可运行（就绪）状态</h2><p>当线程处于 Runnable 状态时，表示线程准备就绪，等待获叏 CPU</p>
+<h2 id="Running-运行（正在运行）状态"><a href="#Running-运行（正在运行）状态" class="headerlink" title="Running                 运行（正在运行）状态"></a>Running                 运行（正在运行）状态</h2><p>假如该线程获叏了 CPU，则迚入 Running 状态，开始执行线程体，即 run()方法中的内 容 </p>
+<p>当一条线程开始运行时，如果它丌是一瞬间完成，那么它丌可能一直处于 Running 状态， 线程在执行过程中会被中断，目的是让其它线程获得执行的机会，像这样线程调度的策 略叏决于底层平台。对于抢占式策略的平台而言，系统系统会给每个可执行的线程一小 段时间来处理任务，当该时间段（时间片）用完，系统会剥夺该线程所占资源（CPU）， 让其他线程获得运行机会。  </p>
+<p>线程调用了一个阻塞式 IO 方法（比如控制台输入方法），在该方法返回前，该线 程被阻塞          </p>
+<h2 id="Block-阻塞（挂起）状态"><a href="#Block-阻塞（挂起）状态" class="headerlink" title="Block                      阻塞（挂起）状态"></a>Block                      阻塞（挂起）状态</h2><p>当如下情况下，线程会迚入阻塞状态：</p>
+<p>线程调用了 sleep()方法主劢放弃所占 CPU 资源</p>
+<p>线程调用了一个阻塞式 IO 方法（比如控制台输入方法），在该方法返回前，该线 程被阻塞</p>
+<p>……</p>
+<h2 id="Dead-死亡状态"><a href="#Dead-死亡状态" class="headerlink" title="Dead                       死亡状态"></a>Dead                       死亡状态</h2><p>当线程的 run()方法执行结束，线程迚入 Dead 状态</p>
+<p>需要注意的是，丌要试图对一个已经死亡的线程调用 start()方法，线程死亡后将丌能再次作为 线程执行，系统会抛出 IllegalThreadStateException 异常</p>
+<p><img src="javase/image-20211230144112552.png" alt="image-20211230144112552"></p>
+<h1 id="线程状态管理"><a href="#线程状态管理" class="headerlink" title="线程状态管理"></a>线程状态管理</h1><h2 id="让出-CPU-Thread-yield"><a href="#让出-CPU-Thread-yield" class="headerlink" title="让出 CPU       Thread.yield()"></a>让出 CPU       Thread.yield()</h2><p>当前线程让出处理器（离开 Running 状态），使当前线程迚入 Runnable 状态等</p>
+<h2 id="休眠-Thread-sleep-times"><a href="#休眠-Thread-sleep-times" class="headerlink" title="休眠                Thread.sleep(times)"></a>休眠                Thread.sleep(times)</h2><p>使当前线程从 Running 放弃处理器迚入 Block 状态, 休眠 times 毫秒, 再返回到 Runnable 如果其他线程打断当前线程的 Block(sleep), 就会収生 InterruptedException。</p>
+<p>yield测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadDemo02</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Person3 p3=<span class="keyword">new</span> <span class="title class_">Person3</span>();</span><br><span class="line">        Person4 p4=<span class="keyword">new</span> <span class="title class_">Person4</span>();</span><br><span class="line">        p3.start();</span><br><span class="line">        p4.start();</span><br><span class="line">        System.out.println(<span class="string">&quot;main over&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person3</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;<span class="number">3</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;谁啊&quot;</span>);</span><br><span class="line">            Thread.<span class="keyword">yield</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span>  <span class="title class_">Person4</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;<span class="number">3</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;查水表的&quot;</span>);</span><br><span class="line">            Thread.<span class="keyword">yield</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一次运行结果:</p>
+<p><img src="javase/image-20211230150759284.png" alt="image-20211230150759284"></p>
+<p>第二次运行结果：</p>
+<p><img src="javase/image-20211230150903771.png" alt="image-20211230150903771"></p>
+<p>可以看到两次的运行结果不一样。这表示Person3调用了yield()方法后，Person3和Person4是公平竞争的。</p>
+<h1 id="线程的常用属性及方法"><a href="#线程的常用属性及方法" class="headerlink" title="线程的常用属性及方法"></a>线程的常用属性及方法</h1><ul>
+<li>线程的优先级 (资源紧张时候, 尽可能优先)<ul>
+<li>t3.setPriority(Thread.MAX_PRIORITY);            设置为最高优先级</li>
+<li>默认有 10 优先级, 优先级高的线程获得执行（进入 Running 状态）的机会多. 机会的 多少丌能通过代码干预</li>
+<li>默认的优先级是 5</li>
+</ul>
+</li>
+<li>后台线程（守护线程，精灵线程）</li>
+<li>t1.setDaemon(true);</li>
+<li>Java 迚程的结束：当前所有前台线程都结束时, Java 迚程结束</li>
+<li>当前台线程结束时， 丌管后台线程是否结束, 都要被停掉!</li>
+<li>获得线程名字<ul>
+<li>getName()</li>
+</ul>
+</li>
+<li>获得当前线程<ul>
+<li>Thread main &#x3D; Thread.currentThread();</li>
+</ul>
+</li>
+</ul>
+<h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><h2 id="单线程TCP"><a href="#单线程TCP" class="headerlink" title="单线程TCP"></a>单线程TCP</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ServerSocket</span> <span class="variable">serverSocket</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">       Socket socket= <span class="literal">null</span>;</span><br><span class="line">       InputStream is= <span class="literal">null</span>;</span><br><span class="line">       <span class="type">String</span> <span class="variable">info</span> <span class="operator">=</span><span class="literal">null</span>;</span><br><span class="line">       <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//1、创建一个服务器端Socket，即ServerSocket，指定绑定的端口，并监听此端口</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           serverSocket = <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">9999</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//2、调用accept()方法开始监听，等待客户端的连接</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           socket = serverSocket.accept();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3、获取输入流，并读取客户端信息</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           is = socket.getInputStream();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(is);</span><br><span class="line">       <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br><span class="line">       <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (((info=br.readLine())!=<span class="literal">null</span>)) <span class="keyword">break</span>;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println(<span class="string">&quot;Hello,我是服务器，客户端说：&quot;</span>+info);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           socket.shutdownInput();<span class="comment">//关闭输入流</span></span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4、获取输出流，响应客户端的请求</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           os = socket.getOutputStream();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(os);</span><br><span class="line">       pw.write(<span class="string">&quot;Hello World！&quot;</span>);</span><br><span class="line">       pw.flush();</span><br><span class="line"></span><br><span class="line">       <span class="comment">//5、关闭资源</span></span><br><span class="line">       <span class="keyword">if</span>(pw!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               pw.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(os!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               os.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(br!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               br.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(isr!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               isr.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(is!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               is.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(socket!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               socket.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(serverSocket!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               serverSocket.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">       <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="literal">null</span>;<span class="comment">//字节输出流</span></span><br><span class="line">       <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//1、创建客户端Socket，指定服务器地址和端口</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           socket = <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">9999</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//2、获取输出流，向服务器端发送信息</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           os = socket.getOutputStream();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">PrintWriter</span>(os);<span class="comment">//将输出流包装成打印流</span></span><br><span class="line">       pw.write(<span class="string">&quot;用户名：admin；密码：admin&quot;</span>);</span><br><span class="line">       pw.flush();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           socket.shutdownOutput();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//3、获取输入流，并读取服务器端的响应信息</span></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           is = socket.getInputStream();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(is)); <span class="type">String</span> <span class="variable">info</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">       <span class="keyword">while</span>((info=br.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">           System.out.println(<span class="string">&quot;Hello,我是客户端，服务器说：&quot;</span>+info);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//4、关闭资源</span></span><br><span class="line">       <span class="keyword">if</span>(br!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               br.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(is!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               is.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(pw!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               pw.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(os!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               os.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(socket!=<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               socket.close();</span><br><span class="line">           &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>先运行服务端再运行客户端。</p>
+<p><img src="javase/image-20211229101612306.png" alt="image-20211229101612306"></p>
+<p><img src="javase/image-20211229101638924.png" alt="image-20211229101638924"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/JavaSE/" rel="tag"># JavaSE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/09/while-%E4%B8%8E-dowhile%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="while 与 dowhile的区别">
+                  <i class="fa fa-angle-left"></i> while 与 dowhile的区别
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/14/test/" rel="next" title="test">
+                  test <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
