@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="🧠 Ollama 命令行解析Ollama 是一个用于在本地运行大语言模型（LLM）的工具。下面为你逐条解析每个命令的作用：  📋 核心命令解析1. ollama serve 作用：启动 Ollama 服务端。 说明：这是后台服务进程，必须先运行它，其他命令（如 run、pull）才能正常工作。通常在终端中执行后，会保持运行状态，你需要新开一个终端来执行其他命令。   2. ollama cre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ollama 命令行解析">
+<meta property="og:url" content="http://example.com/2026/01/22/Ollama-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="🧠 Ollama 命令行解析Ollama 是一个用于在本地运行大语言模型（LLM）的工具。下面为你逐条解析每个命令的作用：  📋 核心命令解析1. ollama serve 作用：启动 Ollama 服务端。 说明：这是后台服务进程，必须先运行它，其他命令（如 run、pull）才能正常工作。通常在终端中执行后，会保持运行状态，你需要新开一个终端来执行其他命令。   2. ollama cre">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-21T19:41:47.000Z">
+<meta property="article:modified_time" content="2026-01-21T19:44:48.967Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ollama">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2026/01/22/Ollama-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/22/Ollama-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90/","path":"2026/01/22/Ollama-命令行解析/","title":"Ollama 命令行解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ollama 命令行解析 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%A7%A0-Ollama-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">🧠 Ollama 命令行解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8B-%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">📋 核心命令解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ollama-serve"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. ollama serve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ollama-create"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. ollama create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ollama-show"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. ollama show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ollama-run"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. ollama run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ollama-stop"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. ollama stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-ollama-pull"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. ollama pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-ollama-push"><span class="nav-number">1.1.7.</span> <span class="nav-text">7. ollama push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-ollama-signin-ollama-signout"><span class="nav-number">1.1.8.</span> <span class="nav-text">8. ollama signin &#x2F; ollama signout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-ollama-list"><span class="nav-number">1.1.9.</span> <span class="nav-text">9. ollama list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-ollama-ps"><span class="nav-number">1.1.10.</span> <span class="nav-text">10. ollama ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-ollama-cp"><span class="nav-number">1.1.11.</span> <span class="nav-text">11. ollama cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-ollama-rm"><span class="nav-number">1.1.12.</span> <span class="nav-text">12. ollama rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-ollama-help"><span class="nav-number">1.1.13.</span> <span class="nav-text">13. ollama help</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%9A%A9-%E5%B8%B8%E7%94%A8-Flags%EF%BC%88%E9%80%89%E9%A1%B9%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">🚩 常用 Flags（选项）</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/22/Ollama-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ollama 命令行解析 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ollama 命令行解析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-01-22 03:41:47 / 修改时间：03:44:48" itemprop="dateCreated datePublished" datetime="2026-01-22T03:41:47+08:00">2026-01-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">技术分享</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="🧠-Ollama-命令行解析"><a href="#🧠-Ollama-命令行解析" class="headerlink" title="🧠 Ollama 命令行解析"></a>🧠 Ollama 命令行解析</h1><p>Ollama 是一个用于在本地运行大语言模型（LLM）的工具。下面为你逐条解析每个命令的作用：</p>
+<hr>
+<h2 id="📋-核心命令解析"><a href="#📋-核心命令解析" class="headerlink" title="📋 核心命令解析"></a>📋 核心命令解析</h2><h3 id="1-ollama-serve"><a href="#1-ollama-serve" class="headerlink" title="1. ollama serve"></a>1. <code>ollama serve</code></h3><ul>
+<li><strong>作用</strong>：启动 Ollama 服务端。</li>
+<li><strong>说明</strong>：这是后台服务进程，必须先运行它，其他命令（如 <code>run</code>、<code>pull</code>）才能正常工作。通常在终端中执行后，会保持运行状态，你需要新开一个终端来执行其他命令。</li>
+</ul>
+<hr>
+<h3 id="2-ollama-create"><a href="#2-ollama-create" class="headerlink" title="2. ollama create"></a>2. <code>ollama create</code></h3><ul>
+<li><strong>作用</strong>：基于模型文件或 Modelfile 创建一个自定义模型。</li>
+<li><strong>说明</strong>：你可以通过编写 Modelfile 来组合现有模型、添加系统提示词或调整参数，然后用这个命令生成自己的模型。</li>
+</ul>
+<hr>
+<h3 id="3-ollama-show"><a href="#3-ollama-show" class="headerlink" title="3. ollama show"></a>3. <code>ollama show</code></h3><ul>
+<li><strong>作用</strong>：显示某个模型的详细信息。</li>
+<li><strong>说明</strong>：执行 <code>ollama show &lt;模型名&gt;</code> 可以查看该模型的参数大小、量化级别、创建时间等元数据。</li>
+</ul>
+<hr>
+<h3 id="4-ollama-run"><a href="#4-ollama-run" class="headerlink" title="4. ollama run"></a>4. <code>ollama run</code></h3><ul>
+<li><strong>作用</strong>：启动并运行一个模型，进入对话交互界面。</li>
+<li><strong>说明</strong>：这是最常用的命令之一，例如 <code>ollama run llama3</code> 会自动下载（如果本地没有）并启动 Llama 3 模型，然后你就可以直接在终端中与模型聊天。</li>
+</ul>
+<hr>
+<h3 id="5-ollama-stop"><a href="#5-ollama-stop" class="headerlink" title="5. ollama stop"></a>5. <code>ollama stop</code></h3><ul>
+<li><strong>作用</strong>：停止一个正在运行的模型。</li>
+<li><strong>说明</strong>：当你用 <code>run</code> 启动模型后，它会在后台占用资源，用这个命令可以释放资源，例如 <code>ollama stop llama3</code>。</li>
+</ul>
+<hr>
+<h3 id="6-ollama-pull"><a href="#6-ollama-pull" class="headerlink" title="6. ollama pull"></a>6. <code>ollama pull</code></h3><ul>
+<li><strong>作用</strong>：从 Ollama 的模型仓库中下载模型到本地。</li>
+<li><strong>说明</strong>：例如 <code>ollama pull qwen2</code> 会把 Qwen2 模型下载到本地，之后就可以用 <code>run</code> 启动它。</li>
+</ul>
+<hr>
+<h3 id="7-ollama-push"><a href="#7-ollama-push" class="headerlink" title="7. ollama push"></a>7. <code>ollama push</code></h3><ul>
+<li><strong>作用</strong>：将本地的自定义模型推送到 Ollama 的远程仓库。</li>
+<li><strong>说明</strong>：如果你用 <code>create</code> 制作了自己的模型，可以用这个命令上传到云端，方便在其他设备上使用。</li>
+</ul>
+<hr>
+<h3 id="8-ollama-signin-ollama-signout"><a href="#8-ollama-signin-ollama-signout" class="headerlink" title="8. ollama signin &#x2F; ollama signout"></a>8. <code>ollama signin</code> &#x2F; <code>ollama signout</code></h3><ul>
+<li><strong>作用</strong>：登录 &#x2F; 退出 Ollama 的账号。</li>
+<li><strong>说明</strong>：登录后才能使用需要权限的功能，比如推送模型到远程仓库。</li>
+</ul>
+<hr>
+<h3 id="9-ollama-list"><a href="#9-ollama-list" class="headerlink" title="9. ollama list"></a>9. <code>ollama list</code></h3><ul>
+<li><strong>作用</strong>：列出本地已下载的所有模型。</li>
+<li><strong>说明</strong>：执行后会显示每个模型的名称、大小和修改时间，让你清楚本地有哪些模型可用。</li>
+</ul>
+<hr>
+<h3 id="10-ollama-ps"><a href="#10-ollama-ps" class="headerlink" title="10. ollama ps"></a>10. <code>ollama ps</code></h3><ul>
+<li><strong>作用</strong>：列出当前正在运行的模型。</li>
+<li><strong>说明</strong>：可以查看哪些模型在后台占用资源，方便你用 <code>stop</code> 命令清理。</li>
+</ul>
+<hr>
+<h3 id="11-ollama-cp"><a href="#11-ollama-cp" class="headerlink" title="11. ollama cp"></a>11. <code>ollama cp</code></h3><ul>
+<li><strong>作用</strong>：复制一个模型，创建一个副本。</li>
+<li><strong>说明</strong>：例如 <code>ollama cp llama3 my-llama3</code> 会把 llama3 模型复制一份并命名为 my-llama3，方便你基于副本进行修改。</li>
+</ul>
+<hr>
+<h3 id="12-ollama-rm"><a href="#12-ollama-rm" class="headerlink" title="12. ollama rm"></a>12. <code>ollama rm</code></h3><ul>
+<li><strong>作用</strong>：删除本地的一个模型。</li>
+<li><strong>说明</strong>：当你不需要某个模型时，用这个命令可以释放磁盘空间，例如 <code>ollama rm llama3</code>。</li>
+</ul>
+<hr>
+<h3 id="13-ollama-help"><a href="#13-ollama-help" class="headerlink" title="13. ollama help"></a>13. <code>ollama help</code></h3><ul>
+<li><strong>作用</strong>：显示帮助信息。</li>
+<li><strong>说明</strong>：可以跟具体命令一起使用，例如 <code>ollama run --help</code> 会显示 <code>run</code> 命令的详细用法和可选参数。</li>
+</ul>
+<hr>
+<h2 id="🚩-常用-Flags（选项）"><a href="#🚩-常用-Flags（选项）" class="headerlink" title="🚩 常用 Flags（选项）"></a>🚩 常用 Flags（选项）</h2><ul>
+<li><code>-h, --help</code>：显示 Ollama 的全局帮助信息。</li>
+<li><code>-v, --version</code>：显示当前 Ollama 的版本号。</li>
+</ul>
+<hr>
+<p>如果你是刚上手，我可以给你整理一份<strong>新手常用命</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ollama/" rel="tag"># ollama</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/30/MySQL%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" rel="prev" title="MySQL本地部署">
+                  <i class="fa fa-angle-left"></i> MySQL本地部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
